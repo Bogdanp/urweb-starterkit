@@ -2,8 +2,8 @@ app:
   build: .
   command: python rundebug.py
   environment:
-    - "COMPILATION_PRE_COMMAND=urweb daemon start"
-    - "COMPILATION_POST_COMMAND=urweb daemon stop"
+    - "PRE_COMMAND=urweb daemon start"
+    - "POST_COMMAND=urweb daemon stop"
     - "COMPILATION_COMMAND=urweb app"
     - "RUN_COMMAND=exec ./app"
   volumes:

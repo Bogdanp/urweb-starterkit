@@ -49,8 +49,8 @@ def poll_for_change_and_then(k, predicate=lambda _: True):
 
 def main(args):
     try:
-        compilation_pre_command = getenv("COMPILATION_PRE_COMMAND")
-        compilation_post_command = getenv("COMPILATION_POST_COMMAND")
+        pre_command = getenv("PRE_COMMAND")
+        post_command = getenv("POST_COMMAND")
         compilation_command = getenv_or_fail("COMPILATION_COMMAND")
         run_command = getenv_or_fail("RUN_COMMAND")
         call = partial(subprocess.call, shell=True)
@@ -59,15 +59,15 @@ def main(args):
 
         def setup():
             logging.debug("Starting up!")
-            if compilation_pre_command:
-                logging.debug("Running: " + compilation_pre_command)
-                call(compilation_pre_command)
+            if pre_command:
+                logging.debug("Running: " + pre_command)
+                call(pre_command)
 
         def teardown(_=None, __=None):
             logging.debug("Tearing down!")
-            if compilation_post_command:
-                logging.debug("Running" + compilation_post_command)
-                call(compilation_post_command)
+            if post_command:
+                logging.debug("Running" + post_command)
+                call(post_command)
 
         def on_change():
             if state["child"]:
