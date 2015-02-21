@@ -1,0 +1,5 @@
+exe app
+html5
+database host=192.168.59.103 dbname=urweb_starterkit user=postgres
+
+app

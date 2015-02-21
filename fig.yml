@@ -1,0 +1,19 @@
+app:
+  build: .
+  command: python rundebug
+  environment:
+    - "COMPILATION_PRE_COMMAND=urweb daemon start"
+    - "COMPILATION_POST_COMMAND=urweb daemon stop"
+    - "COMPILATION_COMMAND=urweb app"
+    - "RUN_COMMAND=exec ./app"
+  volumes:
+    - ".:/app"
+  ports:
+    - "8080:8080"
+  links:
+    - postgres
+
+postgres:
+  image: postgres:9.4.1
+  ports:
+    - "5432:5432"
