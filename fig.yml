@@ -6,6 +6,7 @@ app:
     - "POST_COMMAND=urweb daemon stop"
     - "COMPILATION_COMMAND=urweb app"
     - "RUN_COMMAND=exec ./app"
+    - "URWEB_PQ_CON=host=192.168.59.103 dbname=urweb_starterkit user=postgres"
   volumes:
     - ".:/app"
   ports:
