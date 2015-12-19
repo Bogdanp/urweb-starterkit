@@ -6,7 +6,7 @@ app:
     - "POST_COMMAND=urweb daemon stop"
     - "COMPILATION_COMMAND=urweb app"
     - "RUN_COMMAND=exec ./app"
-    - "URWEB_PQ_CON=host=192.168.59.103 dbname=urweb_starterkit user=postgres"
+    - "URWEB_PQ_CON=host=192.168.99.100 dbname=urweb_starterkit user=postgres"
   volumes:
     - ".:/app"
   ports:
@@ -17,8 +17,8 @@ app:
 nginx:
   image: nginx:1.7
   volumes:
-    - "static:/app/static"
-    - "nginx.conf:/etc/nginx/conf.d/app.conf"
+    - "./static:/app/static"
+    - "./nginx.conf:/etc/nginx/conf.d/app.conf"
   ports:
     - "8080:80"
   links:

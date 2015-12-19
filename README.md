@@ -6,10 +6,10 @@ A simple Docker setup for playing around w/ [Ur/Web](http://www.impredicative.co
 
 Assuming you're on OS X:
 
-1. Install [Fig](http://www.fig.sh/install.html)
-2. `cd urweb-starterkit`
-3. `fig up -d`
-4. `fig run postgres createdb -Upostgres -h192.168.59.103 urweb_starterkit`
-5. `open http://192.168.59.103:8080/App/main`
+1. Install the [Docker Toolbox](https://www.docker.com/docker-toolbox)
+1. `cd urweb-starterkit`
+1. `docker-compose up -d`
+1. `docker-compose run postgres createdb -Upostgres -h$(docker-machine ip default) urweb_starterkit`
+1. `open http://$(docker-machine ip default):8080/App/main`
 
-You can run `fig logs app` to tail the app compilation and server logs.
+You can run `docker-compose logs app` to tail the app compilation and server logs.
